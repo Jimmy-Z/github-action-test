@@ -13,6 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: echo $GITHUB_ENV
+      - run: set
       - run: echo "REV_SHORT=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
-      - run: echo $REV_SHORT
-      - run: echo ${{ env.REV_SHORT }}
+      - run: echo _$REV_SHORT
+      - run: echo _${{ env.REV_SHORT }}
