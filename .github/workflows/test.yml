@@ -9,6 +9,5 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
-      - run: |
-        echo $GITHUB_ENV
-        echo $(git rev-parse --short HEAD)
+      - run: echo $GITHUB_ENV
+      - run: echo $(git rev-parse --short HEAD)
