@@ -5,9 +5,9 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build:
+  test:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
-      - run: echo ${{ GITHUB_ENV }}
+      - run: echo ${ GITHUB_ENV }
       - run: echo $(git rev-parse --short HEAD)
