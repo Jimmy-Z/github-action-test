@@ -12,8 +12,7 @@ jobs:
     runs-on: ${{ matrix.runner }}
     steps:
       - uses: actions/checkout@v4
-      - if: runner.os != 'Windows'
-        run: echo "REV_SHORT=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
-      - if: runner.os == 'Windows'
-        run: echo "REV_SHORT=$(git rev-parse --short HEAD)" >> $env:GITHUB_ENV
-      - run: echo _${{ env.REV_SHORT }}
+      - run: echo "TEST_VAR_A=TEST" >> $GITHUB_ENV
+      - run: echo _${{ env.TEST_VAR_A }}
+      - run: echo "TEST_VAR_B=TEST" >> $env:GITHUB_ENV
+      - run: echo _${{ env.TEST_VAR_B }}
