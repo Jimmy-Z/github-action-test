@@ -1,0 +1,14 @@
+name: test
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+        echo $GITHUB_ENV
+        echo $(git rev-parse --short HEAD)
