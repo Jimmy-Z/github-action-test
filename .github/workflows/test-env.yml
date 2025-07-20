@@ -1,8 +1,6 @@
 name: test env
 
-on:
-  push:
-    branches: [ "main" ]
+on: push
 
 jobs:
   test:
@@ -12,7 +10,7 @@ jobs:
         runner: ["ubuntu-latest", "windows-latest", "macos-latest"]
     runs-on: ${{ matrix.runner }}
     steps:
-      - run: echo "TEST_VAR_A=TEST" >> $GITHUB_ENV
-      - run: echo _${{ env.TEST_VAR_A }}
-      - run: echo "TEST_VAR_B=TEST" >> $env:GITHUB_ENV
-      - run: echo _${{ env.TEST_VAR_B }}
+      - run: echo "TEST_A=TEST" >> $GITHUB_ENV
+      - run: echo "test a: ${{ env.TEST_A }}"
+      - run: echo "TEST_B=TEST" >> $env:GITHUB_ENV
+      - run: echo "test b: ${{ env.TEST_B }}"

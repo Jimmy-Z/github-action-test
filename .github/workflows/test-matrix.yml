@@ -1,0 +1,26 @@
+name: test matrix
+
+on: push
+
+jobs:
+  test:
+    strategy:
+      matrix:
+        # https://docs.github.com/en/actions/how-tos/writing-workflows/choosing-where-your-workflow-runs/choosing-the-runner-for-a-job#standard-github-hosted-runners-for-public-repositories
+        targets:
+            - target: linux
+              runner: ubuntu-latest
+            - target: windows
+              runner: windows-latest
+            - target: android
+              runner: ubuntu-latest
+        packages: [ prj_a, prj_b ]
+        include:
+          - targets:
+            - target: linux
+              runner: ubuntu-latest
+            packages: prj_c
+        
+    runs-on: ${{ matrix.targets.runner }}
+    steps:
+      - run: echo "building ${{ matrix.packages }}-${{ matrix.targets.target }} on ${{ matrix.targets.runner}}"

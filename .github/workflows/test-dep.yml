@@ -1,9 +1,7 @@
 
 name: test dep
 
-on:
-  push:
-    branches: [ "main" ]
+on: push
 
 jobs:
   pre-test:
@@ -13,6 +11,7 @@ jobs:
       - run: false
   test:
     runs-on: ubuntu-latest
+    # this should not run
     needs: [pre-test]
     steps:
       - run: echo hello
