@@ -8,10 +8,10 @@ jobs:
   test:
     strategy:
       matrix:
-        runner: ["ubuntu-latest", "windows-latest"]
+        # https://docs.github.com/en/actions/how-tos/writing-workflows/choosing-where-your-workflow-runs/choosing-the-runner-for-a-job#standard-github-hosted-runners-for-public-repositories
+        runner: ["ubuntu-latest", "windows-latest", "macos-latest"]
     runs-on: ${{ matrix.runner }}
     steps:
-      - uses: actions/checkout@v4
       - run: echo "TEST_VAR_A=TEST" >> $GITHUB_ENV
       - run: echo _${{ env.TEST_VAR_A }}
       - run: echo "TEST_VAR_B=TEST" >> $env:GITHUB_ENV
