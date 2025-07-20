@@ -7,20 +7,21 @@ jobs:
     strategy:
       matrix:
         # https://docs.github.com/en/actions/how-tos/writing-workflows/choosing-where-your-workflow-runs/choosing-the-runner-for-a-job#standard-github-hosted-runners-for-public-repositories
-        targets:
-            - target: linux
-              runner: ubuntu-latest
-            - target: windows
-              runner: windows-latest
-            - target: android
-              runner: ubuntu-latest
-        packages: [ prj_a, prj_b ]
+        target:
+          - target: linux
+            runner: ubuntu-latest
+          - target: windows
+            runner: windows-latest
+          - target: android
+            runner: ubuntu-latest
+        package: [ prj_a, prj_b ]
         include:
-          - targets:
-            - target: linux
+          - target:
+              target: linux
               runner: ubuntu-latest
-            packages: prj_c
+            package: prj_c
         
-    runs-on: ${{ matrix.targets.runner }}
+    # runs-on: ${{ matrix.target.runner }}
+    runs-on: ubuntu-latest
     steps:
-      - run: echo "building ${{ matrix.packages }}-${{ matrix.targets.target }} on ${{ matrix.targets.runner}}"
+      - run: echo "building ${{ matrix.package }}-${{ matrix.target.target }} on ${{ matrix.target.runner}}"
