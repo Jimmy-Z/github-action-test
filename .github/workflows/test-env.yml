@@ -13,4 +13,4 @@ jobs:
       - run: echo "TEST_A=TEST" >> $GITHUB_ENV
       - run: echo "test a result:" ${{ env.TEST_A }}
       - run: echo "TEST_B=TEST" >> $env:GITHUB_ENV
-      - run: echo "test b result:" ${{ env.TEST_B }}"
+      - run: echo "test b result:" ${{ env.TEST_B }}

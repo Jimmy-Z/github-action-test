@@ -1,5 +1,5 @@
 
-name: test dep
+name: test dep (failing expected)
 
 on: push
 

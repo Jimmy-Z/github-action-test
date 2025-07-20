@@ -21,6 +21,6 @@ jobs:
               runner: ubuntu-latest
             packages: prj_c
         
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.targets.runner }}
     steps:
       - run: echo "building ${{ matrix.packages }}-${{ matrix.targets.target }} on ${{ matrix.targets.runner}}"
