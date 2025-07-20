@@ -12,8 +12,7 @@ jobs:
     runs-on: ${{ matrix.runner }}
     steps:
       - uses: actions/checkout@v4
-      - run: echo $GITHUB_ENV
-      - run: set
+      - run: echo "TEST_PLAIN=Hello_ENV" >> $GITHUB_ENV
+      - run: echo _${{ env.TEST_PLAIN }}
       - run: echo "REV_SHORT=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
-      - run: echo _$REV_SHORT
       - run: echo _${{ env.REV_SHORT }}
